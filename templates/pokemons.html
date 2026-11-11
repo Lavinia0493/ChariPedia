@@ -1,0 +1,36 @@
+    {% extends "base.html" %}
+
+    {% block titulo %}Pokemons{% endblock titulo %}
+
+    {% block content %}
+        <h1 class="text-center fw-bold display-4 text-white">Pokémons</h1>
+        <div class="w-50 mx-auto my-3">
+            <form action="{{ url_for('front_controller.pesquisar') }}" method="POST" class="d-flex gap-2">
+                <input type="text" name="pesquisar" id="pesquisar" placeholder="Pesquisar Pokémon..." class="form-control">                
+                <button type="submit" class="btn btn-dark px-4">Pesquisar</button>
+            </form>
+        </div>
+
+        {% if pokemons_dados %}
+            <div class="d-flex flex-wrap">
+                {% for item in pokemons_dados %}
+                    <div class="p-1" style="flex: 0 0 10%; max-width: 10%;">
+                        <div class="card h-100 shadow-sm">
+                            <div class="ratio ratio-1x1">
+                                <img src="{{item.img}}" class="card-img-top">
+                            </div>
+                            <div class="card-body d-flex flex-column justify-content-between p-1 text-center">
+                                <h6 class="card-title text-truncate mb-1">{{ item.nome }}</h6>
+                                <form method="POST" action="{{ url_for('front_controller.favoritos')}}">
+                                    <input type="hidden" name="img" value="{{item.img}}">
+                                    <input type="hidden" name="nome" value="{{item.nome}}">
+                                    <button type="submit" class="btn btn-sm btn-danger w-100">Favoritar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    {% endblock content %}

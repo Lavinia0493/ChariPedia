@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block titulo %}Home{% endblock titulo %}
+
+{% block content %}
+    <div class="container hero-section text-white">
+        <h1>Bem-vindo ao ChariPedia! 
+        {% if session.get('user') %}
+            {{nome}}
+        {% endif %}</h1>
+        <p>Descubra o mundo dos Pokémon de maneira fácil e divertida! Se você é um treinador experiente ou está começando sua jornada, este site é o lugar perfeito para você explorar sobre seus Pokémon favoritos.</p>
+        
+        <h3>O que você pode fazer aqui:</h3>
+        <ul>
+            <li><strong>Ver Todos os Pokémon:</strong> Explore nossa vasta coleção de Pokémon!</li>
+            <li><strong>Favoritar seus Pokémon:</strong> Crie sua própria coleção! Marque seus Pokémon preferidos para acessá-los sempre que quiser. Eles ficam guardados na sua página de favoritos, prontinhos para você ver de novo.</li>
+        </ul>
+        
+        <h3>Por que usar o PokéDex Online?</h3><p><strong>Pronto para começar sua jornada?</strong> Explore, pesquise e torne-se um verdadeiro mestre Pokémon.</p>
+    </div>
+{% endblock content %}

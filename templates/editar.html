@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %}Editar{% endblock titulo %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+        <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
+            <h2 class="mb-4 text-center">Editar dados do login</h2>
+
+            <form method="POST" action="{{ url_for('front_controller.editar_login') }}" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuário</label>
+                    <input type="text" name="usuario" id="usuario" class="form-control" value="{{ item.nome}}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" name="senha" id="senha" class="form-control" value="{{ item.senha}}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" name="email" id="email" class="form-control" value="{{ item.email}}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="photo" class="form-label">Foto do Contato</label>
+                    <input type="file" id="photo" name="fileFoto" class="form-control" value="{{ item.imagem}}" accept="image/*">
+                </div>
+                
+                <button type="submit" class="btn btn-outline-success w-100">Editar</button>
+            </form>
+            <a href="{{ url_for('front_controller.excluir')}}" class="my-1">
+                <button type="submit" class="btn btn-outline-danger w-100" onclick="return confirm('Confirma a exclusão da conta?')">Excluir conta</button>
+            </a>
+        </div>
+    </div>
+{% endblock content %}

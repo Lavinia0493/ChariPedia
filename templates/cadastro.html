@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro{% endblock title %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+        <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
+            <h2 class="mb-4 text-center">Cadastro</h2>
+
+            <form method="POST" action="{{ url_for('front_controller.cadastro') }}" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuário</label>
+                    <input type="text" name="usuario" id="usuario" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" name="senha" id="senha" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="photo" class="form-label">Foto do Contato</label>
+                    <input type="file" id="photo" name="fileFoto" class="form-control" accept="image/*">
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary w-100">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
